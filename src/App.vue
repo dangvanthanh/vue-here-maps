@@ -1,18 +1,22 @@
 <template>
   <div id="app">
-    <HereMap/>
+    <HereMap 
+      appId="FymdsOx1OInDIkWIBErG" 
+      appCode="i_LyBjYPh3K-ymfzPrpBPw" 
+      :lng="106.660172" 
+      :lat="10.762622"/>
   </div>
 </template>
 
 <script>
-import HereMap from './components/HereMap.vue'
+import HereMap from "./components/HereMap.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     HereMap
   }
-}
+};
 </script>
 
 <style>
@@ -21,7 +25,7 @@ body {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

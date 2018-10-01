@@ -4,18 +4,58 @@
 
 <script>
 export default {
-  name: 'HereMap',
+  name: "HereMap",
+  props: {
+    appId: String,
+    appCode: String,
+    lng: Number,
+    lat: Number
+  },
   mounted() {
     const platform = new H.service.Platform({
-      app_id: 'FymdsOx1OInDIkWIBErG',
-      app_code: 'i_LyBjYPh3K-ymfzPrpBPw'
+      app_id: this.appId,
+      app_code: this.appCode
     });
 
     const defaultLayers = platform.createDefaultLayers();
 
-    const map = new H.Map(document.getElementById('map'), defaultLayers.normal.map, {
-      zoom: 10,
-      center: { lng: 106.660172, lat: 10.762622 }
+    const map = new H.Map(
+      document.getElementById("map"),
+      defaultLayers.normal.map,
+      {
+        zoom: 18,
+        center: { lng: this.lng, lat: this.lat }
+      }
+    );
+
+    // Add the venue layer to the map
+    map.addLayer(defaultLayers.venues);
+
+    // Get TileProvider from the venue layer
+    var venueProvider = defaultLayers.venues.getProvider();
+
+    // Set floor level
+    venueProvider.setCurrentLevel(-1);
+
+    // Log space information on "tap" event
+    map.addEventListener("tap", e => {
+      if (e.target instanceof H.service.venues.Space) {
+        console.log(e.target.getData());
+      }
+    });
+
+    // Highlight the space on "pointermove"
+    map.addEventListener("pointermove", e => {
+      let space = e.target;
+
+      if (space instanceof H.service.venues.Space) {
+        space.setStyle(
+          space.getStyle().getCopy({
+            lineWidth: 2,
+            strokeColor: "rgba(0, 0, 0, 0.5)"
+          })
+        );
+      }
     });
   }
 };

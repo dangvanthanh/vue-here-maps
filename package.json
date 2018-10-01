@@ -44,6 +44,8 @@
     "not ie <= 8"
   ],
   "husky": {
-    "precommit": "pretty-quick --staged"
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }

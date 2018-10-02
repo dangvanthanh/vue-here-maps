@@ -18,44 +18,29 @@ export default {
     });
 
     const defaultLayers = platform.createDefaultLayers();
+    const coordinates = {
+      lng: this.lng,
+      lat: this.lat
+    };
+    const mapOptions = {
+      zoom: 18,
+      center: coordinates
+    };
 
     const map = new H.Map(
       document.getElementById("map"),
       defaultLayers.normal.map,
-      {
-        zoom: 18,
-        center: { lng: this.lng, lat: this.lat }
-      }
+      mapOptions
     );
+
+    const marker = new H.map.Marker(coordinates);
+    map.addObject(marker);
 
     // Add the venue layer to the map
     map.addLayer(defaultLayers.venues);
 
-    // Get TileProvider from the venue layer
-    var venueProvider = defaultLayers.venues.getProvider();
-
-    // Set floor level
-    venueProvider.setCurrentLevel(-1);
-
-    // Log space information on "tap" event
-    map.addEventListener("tap", e => {
-      if (e.target instanceof H.service.venues.Space) {
-        console.log(e.target.getData());
-      }
-    });
-
-    // Highlight the space on "pointermove"
-    map.addEventListener("pointermove", e => {
-      let space = e.target;
-
-      if (space instanceof H.service.venues.Space) {
-        space.setStyle(
-          space.getStyle().getCopy({
-            lineWidth: 2,
-            strokeColor: "rgba(0, 0, 0, 0.5)"
-          })
-        );
-      }
+    window.addEventListener("resize", () => {
+      map.getViewPort().resize();
     });
   }
 };
@@ -64,10 +49,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .here-map {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: relative;
+  width: 100vm;
+  height: 100vh;
 }
 </style>

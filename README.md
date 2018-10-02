@@ -8,7 +8,7 @@
 - [ ] Geocoder autocomplete
 - [ ] Batch geocoder
 - [ ] Geogencing extension
-- [ ] Routing
+- [x] Routing
 - [ ] Transit
 - [ ] Intermodal routing
 - [ ] Places

@@ -1,5 +1,5 @@
 <template>
-  <div class="here-map" id="map"></div>
+  <div class="here-map" id="map1"></div>
 </template>
 
 <script>
@@ -28,7 +28,7 @@ export default {
     };
 
     const map = new H.Map(
-      document.getElementById("map"),
+      document.getElementById("map1"),
       defaultLayers.normal.map,
       mapOptions
     );
@@ -50,7 +50,7 @@ export default {
 <style scoped>
 .here-map {
   position: relative;
-  width: 100vm;
-  height: 100vh;
+  width: 400px;
+  height: 400px;
 }
 </style>

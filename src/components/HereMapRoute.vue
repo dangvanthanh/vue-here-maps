@@ -1,10 +1,12 @@
 <template>
-  <div class="here-map" id="map2"></div>
+  <div class="here-map">
+    <div ref="map" data-here-map></div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "HereMapRoute",
+  name: 'HereMapRoute',
   props: {
     appId: String,
     appCode: String,
@@ -27,22 +29,18 @@ export default {
       center: coordinates
     };
 
-    const map = new H.Map(
-      document.getElementById("map2"),
-      defaultLayers.normal.map,
-      mapOptions
-    );
+    const map = new H.Map(this.$refs.map, defaultLayers.normal.map, mapOptions);
 
     const routingParameters = {
       // The routing mode:
-      mode: "fastest;bicycle",
+      mode: 'fastest;bicycle',
       // The start point of the route:
-      waypoint0: "geo!10.762622,106.660172103",
+      waypoint0: 'geo!10.762622,106.660172103',
       // The end point of the route:
-      waypoint1: "geo!10.7846,106.660172105",
+      waypoint1: 'geo!10.7846,106.660172105',
       // To retrieve the shape of the route we choose the route
       // representation mode 'display'
-      representation: "display"
+      representation: 'display'
     };
 
     const onResult = function(result) {
@@ -59,7 +57,7 @@ export default {
 
         // Push all the points in the shape into the linestring:
         routeShape.forEach(function(point) {
-          let parts = point.split(",");
+          let parts = point.split(',');
           linestring.pushLatLngAlt(parts[0], parts[1]);
         });
 
@@ -70,7 +68,7 @@ export default {
         // Create a polyline to display the route:
         let routeLine = new H.map.Polyline(linestring, {
           style: { lineWidth: 10 },
-          arrows: { fillColor: "white", frequency: 2, width: 0.8, length: 0.7 }
+          arrows: { fillColor: 'white', frequency: 2, width: 0.8, length: 0.7 }
         });
 
         // Create a marker for the start point:
@@ -93,22 +91,24 @@ export default {
       }
     };
 
+    const onError = error => {
+      alert(error);
+    };
+
     // Get an instance of the routing service:
     var router = platform.getRoutingService();
 
     // Call calculateRoute() with the routing parameters,
     // the callback and an error callback function (called if a
     // communication error occurs):
-    router.calculateRoute(routingParameters, onResult, error => {
-      console.log(error.message);
-    });
+    router.calculateRoute(routingParameters, onResult, onError);
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.here-map {
+div[data-here-map] {
   position: relative;
   width: 400px;
   height: 400px;

@@ -1,10 +1,12 @@
 <template>
-  <div class="here-map" id="map1"></div>
+  <div class="here-map">
+    <div ref="map" data-here-map></div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "HereMap",
+  name: 'HereMap',
   props: {
     appId: String,
     appCode: String,
@@ -27,11 +29,7 @@ export default {
       center: coordinates
     };
 
-    const map = new H.Map(
-      document.getElementById("map1"),
-      defaultLayers.normal.map,
-      mapOptions
-    );
+    const map = new H.Map(this.$refs.map, defaultLayers.normal.map, mapOptions);
 
     const marker = new H.map.Marker(coordinates);
     map.addObject(marker);
@@ -39,7 +37,7 @@ export default {
     // Add the venue layer to the map
     map.addLayer(defaultLayers.venues);
 
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       map.getViewPort().resize();
     });
   }
@@ -48,7 +46,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.here-map {
+div[data-here-map] {
   position: relative;
   width: 400px;
   height: 400px;

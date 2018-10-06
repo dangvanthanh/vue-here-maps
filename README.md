@@ -4,15 +4,15 @@
 - [ ] Map image
 - [ ] Map title
 - [x] Venue maps
-- [ ] Geocoder
+- [x] Geocoder
 - [ ] Geocoder autocomplete
 - [ ] Batch geocoder
 - [ ] Geogencing extension
 - [x] Routing
 - [ ] Transit
 - [ ] Intermodal routing
-- [ ] Places
-- [ ] Traffic
+- [x] Places
+- [x] Traffic
 - [ ] Tracking
 - [ ] Positioning
 - [ ] Weather

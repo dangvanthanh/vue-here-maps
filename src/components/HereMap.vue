@@ -25,7 +25,7 @@ export default {
       lat: this.lat
     };
     const mapOptions = {
-      zoom: 18,
+      zoom: 16,
       center: coordinates
     };
 
@@ -36,10 +36,36 @@ export default {
 
     // Add the venue layer to the map
     map.addLayer(defaultLayers.venues);
+    map.addLayer(defaultLayers.incidents);
+    this.switchMapLanguage(map, platform, defaultLayers);
 
     window.addEventListener('resize', () => {
       map.getViewPort().resize();
     });
+  },
+  methods: {
+    switchMapLanguage(map, platform, defaultLayers) {
+      let mapTileService = platform.getMapTileService({
+        type: 'base'
+      });
+
+      let pixelRatio = 1;
+
+      // Our layer will load tiles from the HERE Map Tile API
+      let vietnamMapLayer = mapTileService.createTileLayer(
+        'maptile',
+        'normal.day',
+        pixelRatio === 1 ? 256 : 512,
+        'png8',
+        { lg: 'CHI', ppi: pixelRatio === 1 ? undefined : 320 }
+      );
+
+      map.setBaseLayer(vietnamMapLayer);
+
+      let ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
+
+      ui.removeControl('mapsettings');
+    }
   }
 };
 </script>

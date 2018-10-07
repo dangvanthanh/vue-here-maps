@@ -13,13 +13,14 @@ export default {
     lng: Number,
     lat: Number
   },
-  mounted() {
-    const platform = new H.service.Platform({
+  created() {
+    this.platform = new H.service.Platform({
       app_id: this.appId,
       app_code: this.appCode
     });
-
-    const defaultLayers = platform.createDefaultLayers();
+  },
+  mounted() {
+    const defaultLayers = this.platform.createDefaultLayers();
     const coordinates = {
       lng: this.lng,
       lat: this.lat
@@ -29,18 +30,18 @@ export default {
       center: coordinates
     };
 
-    const map = new H.Map(this.$refs.map, defaultLayers.normal.map, mapOptions);
+    this.map = new H.Map(this.$refs.map, defaultLayers.normal.map, mapOptions);
 
     const marker = new H.map.Marker(coordinates);
-    map.addObject(marker);
+    this.map.addObject(marker);
 
     // Add the venue layer to the map
-    map.addLayer(defaultLayers.venues);
-    map.addLayer(defaultLayers.incidents);
-    this.switchMapLanguage(map, platform, defaultLayers);
+    this.map.addLayer(defaultLayers.venues);
+    this.map.addLayer(defaultLayers.incidents);
+    this.switchMapLanguage(this.map, this.platform, defaultLayers);
 
     window.addEventListener('resize', () => {
-      map.getViewPort().resize();
+      this.map.getViewPort().resize();
     });
   },
   methods: {

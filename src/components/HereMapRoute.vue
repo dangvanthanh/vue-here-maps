@@ -13,17 +13,19 @@ export default {
     lng: Number,
     lat: Number
   },
-  mounted() {
-    const platform = new H.service.Platform({
+  created() {
+    this.platform = new H.service.Platform({
       app_id: this.appId,
       app_code: this.appCode
     });
-
-    const defaultLayers = platform.createDefaultLayers();
+  },
+  mounted() {
+    const defaultLayers = this.platform.createDefaultLayers();
     const coordinates = {
       lng: this.lng,
       lat: this.lat
     };
+
     const mapOptions = {
       zoom: 18,
       center: coordinates
@@ -96,7 +98,7 @@ export default {
     };
 
     // Get an instance of the routing service:
-    var router = platform.getRoutingService();
+    var router = this.platform.getRoutingService();
 
     // Call calculateRoute() with the routing parameters,
     // the callback and an error callback function (called if a

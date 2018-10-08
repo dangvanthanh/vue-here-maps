@@ -7,7 +7,8 @@
           appId="FymdsOx1OInDIkWIBErG" 
           appCode="i_LyBjYPh3K-ymfzPrpBPw" 
           :lng="106.660172" 
-          :lat="10.762622"/>
+          :lat="10.762622"
+          :zoom="14"/>
       </div>
       <div class="grid__item">
         <h2>Route</h2>
@@ -25,6 +26,14 @@
           :lng="106.660172" 
           :lat="10.762622"/>
       </div>
+      <div class="grid__item">
+        <h2>Weather</h2>
+        <HereMapWeather
+          appId="FymdsOx1OInDIkWIBErG" 
+          appCode="i_LyBjYPh3K-ymfzPrpBPw" 
+          :lng="106.660172" 
+          :lat="10.762622"/>
+      </div>
     </div>
 
   </div>
@@ -34,13 +43,15 @@
 import HereMap from './components/HereMap.vue';
 import HereMapRoute from './components/HereMapRoute.vue';
 import HereMapPlace from './components/HereMapPlace.vue';
+import HereMapWeather from './components/HereMapWeather.vue';
 
 export default {
   name: 'app',
   components: {
     HereMap,
     HereMapRoute,
-    HereMapPlace
+    HereMapPlace,
+    HereMapWeather
   }
 };
 </script>

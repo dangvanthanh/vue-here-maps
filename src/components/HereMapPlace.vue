@@ -21,12 +21,13 @@ export default {
       place: ''
     };
   },
-  mounted() {
+  created() {
     this.platform = new H.service.Platform({
       app_id: this.appId,
       app_code: this.appCode
     });
-
+  },
+  mounted() {
     const defaultLayers = this.platform.createDefaultLayers();
     const coordinates = {
       lng: this.lng,

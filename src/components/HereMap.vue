@@ -11,7 +11,8 @@ export default {
     appId: String,
     appCode: String,
     lng: Number,
-    lat: Number
+    lat: Number,
+    zoom: Number
   },
   created() {
     this.platform = new H.service.Platform({
@@ -26,7 +27,7 @@ export default {
       lat: this.lat
     };
     const mapOptions = {
-      zoom: 16,
+      zoom: this.zoom,
       center: coordinates
     };
 

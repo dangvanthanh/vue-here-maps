@@ -15,7 +15,7 @@
 - [x] Traffic
 - [ ] Tracking
 - [ ] Positioning
-- [ ] Weather
+- [x] Weather
 - [ ] Map feedback
 - [ ] Geovisualization
 - [ ] Custom location extension

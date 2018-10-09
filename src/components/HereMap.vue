@@ -51,7 +51,7 @@ export default {
         type: 'base'
       });
 
-      let pixelRatio = 1;
+      let pixelRatio = window.devicePixelRatio || 1;
 
       // Our layer will load tiles from the HERE Map Tile API
       let vietnamMapLayer = mapTileService.createTileLayer(
@@ -59,12 +59,12 @@ export default {
         'normal.day',
         pixelRatio === 1 ? 256 : 512,
         'png8',
-        { lg: 'CHI', ppi: pixelRatio === 1 ? undefined : 320 }
+        { lg: 'VIE', ppi: pixelRatio === 1 ? undefined : 320 }
       );
 
       map.setBaseLayer(vietnamMapLayer);
 
-      let ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
+      let ui = H.ui.UI.createDefault(map, defaultLayers, '');
 
       ui.removeControl('mapsettings');
     }

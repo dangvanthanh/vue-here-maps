@@ -34,6 +34,10 @@
           :lng="106.660172" 
           :lat="10.762622"/>
       </div>
+      <div class="grid__item">
+        <h2>Map Image</h2>
+        <HereMapImage/>
+      </div>
     </div>
 
   </div>
@@ -44,6 +48,7 @@ import HereMap from './components/HereMap.vue';
 import HereMapRoute from './components/HereMapRoute.vue';
 import HereMapPlace from './components/HereMapPlace.vue';
 import HereMapWeather from './components/HereMapWeather.vue';
+import HereMapImage from './components/HereMapImage.vue';
 
 export default {
   name: 'app',
@@ -51,7 +56,8 @@ export default {
     HereMap,
     HereMapRoute,
     HereMapPlace,
-    HereMapWeather
+    HereMapWeather,
+    HereMapImage
   }
 };
 </script>

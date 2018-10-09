@@ -1,7 +1,7 @@
 # Here
 
 - [x] Interactive maps
-- [ ] Map image
+- [x] Map image
 - [ ] Map title
 - [x] Venue maps
 - [x] Geocoder

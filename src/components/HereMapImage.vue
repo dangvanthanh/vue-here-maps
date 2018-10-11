@@ -15,7 +15,7 @@ export default {
     };
   },
   mounted() {
-    this.mapImage = `${MAP_IMAGE_API}?c=10.762622%2C106.660172&w=400&h=400&z=16&app_id=FymdsOx1OInDIkWIBErG&app_code=i_LyBjYPh3K-ymfzPrpBPw&r=1539096998293`;
+    this.mapImage = `${MAP_IMAGE_API}?ml=vie&c=10.762622%2C106.660172&w=400&h=400&z=16&app_id=FymdsOx1OInDIkWIBErG&app_code=i_LyBjYPh3K-ymfzPrpBPw&r=1539096998293`;
   }
 };
 </script>

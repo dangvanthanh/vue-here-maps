@@ -39,6 +39,9 @@ export default {
     // Add the venue layer to the map
     this.map.addLayer(defaultLayers.venues);
     this.map.addLayer(defaultLayers.incidents);
+    var behavior = new H.mapevents.Behavior(
+      new H.mapevents.MapEvents(this.map)
+    );
     this.switchMapLanguage(this.map, this.platform, defaultLayers);
 
     window.addEventListener('resize', () => {

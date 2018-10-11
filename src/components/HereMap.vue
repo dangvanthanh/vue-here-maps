@@ -42,6 +42,7 @@ export default {
     var behavior = new H.mapevents.Behavior(
       new H.mapevents.MapEvents(this.map)
     );
+
     this.switchMapLanguage(this.map, this.platform, defaultLayers);
 
     window.addEventListener('resize', () => {
@@ -67,7 +68,7 @@ export default {
 
       map.setBaseLayer(vietnamMapLayer);
 
-      let ui = H.ui.UI.createDefault(map, defaultLayers, '');
+      let ui = H.ui.UI.createDefault(map, defaultLayers);
 
       ui.removeControl('mapsettings');
     }

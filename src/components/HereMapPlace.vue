@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import { setMapLanguage } from '../utils';
+
 export default {
   name: 'HereMapPlace',
   props: {
@@ -18,6 +20,8 @@ export default {
   },
   data() {
     return {
+      map: {},
+      platform: {},
       place: ''
     };
   },
@@ -39,6 +43,7 @@ export default {
     };
 
     this.map = new H.Map(this.$refs.map, defaultLayers.normal.map, mapOptions);
+    setMapLanguage(this.map, this.platform, defaultLayers, 'VIE');
   },
   methods: {
     geocode(platform, searchText) {
@@ -60,6 +65,7 @@ export default {
           lat: position.latitude,
           lng: position.longitude
         });
+
         group.addObject(marker);
 
         this.map.addObject(group);

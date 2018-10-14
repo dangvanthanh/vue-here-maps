@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { setMapLanguage } from '../utils';
+
 export default {
   name: 'HereMap',
   props: {
@@ -13,6 +15,12 @@ export default {
     lng: Number,
     lat: Number,
     zoom: Number
+  },
+  data() {
+    return {
+      map: {},
+      platform: {}
+    };
   },
   created() {
     this.platform = new H.service.Platform({
@@ -39,39 +47,12 @@ export default {
     // Add the venue layer to the map
     this.map.addLayer(defaultLayers.venues);
     this.map.addLayer(defaultLayers.incidents);
-    var behavior = new H.mapevents.Behavior(
-      new H.mapevents.MapEvents(this.map)
-    );
 
-    this.switchMapLanguage(this.map, this.platform, defaultLayers);
+    setMapLanguage(this.map, this.platform, defaultLayers, 'VIE');
 
     window.addEventListener('resize', () => {
       this.map.getViewPort().resize();
     });
-  },
-  methods: {
-    switchMapLanguage(map, platform, defaultLayers) {
-      let mapTileService = platform.getMapTileService({
-        type: 'base'
-      });
-
-      let pixelRatio = window.devicePixelRatio || 1;
-
-      // Our layer will load tiles from the HERE Map Tile API
-      let vietnamMapLayer = mapTileService.createTileLayer(
-        'maptile',
-        'normal.day',
-        pixelRatio === 1 ? 256 : 512,
-        'png8',
-        { lg: 'VIE', ppi: pixelRatio === 1 ? undefined : 320 }
-      );
-
-      map.setBaseLayer(vietnamMapLayer);
-
-      let ui = H.ui.UI.createDefault(map, defaultLayers);
-
-      ui.removeControl('mapsettings');
-    }
   }
 };
 </script>

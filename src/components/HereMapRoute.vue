@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { setMapLanguage } from '../utils';
+
 export default {
   name: 'HereMapRoute',
   props: {
@@ -12,6 +14,12 @@ export default {
     appCode: String,
     lng: Number,
     lat: Number
+  },
+  data() {
+    return {
+      map: {},
+      platform: {}
+    };
   },
   created() {
     this.platform = new H.service.Platform({
@@ -32,6 +40,9 @@ export default {
     };
 
     const map = new H.Map(this.$refs.map, defaultLayers.normal.map, mapOptions);
+    map.setBaseLayer(defaultLayers.normal.traffic);
+    map.addLayer(defaultLayers.incidents);
+    setMapLanguage(map, this.platform, defaultLayers, 'VIE');
 
     const routingParameters = {
       // The routing mode:

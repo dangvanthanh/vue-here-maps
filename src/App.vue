@@ -38,8 +38,16 @@
         <h2>Map Image</h2>
         <HereMapImage/>
       </div>
+      <div class="grid__item">
+        <h2>Capture</h2>
+        <HereMapCapture
+          appId="FymdsOx1OInDIkWIBErG" 
+          appCode="i_LyBjYPh3K-ymfzPrpBPw" 
+          :lng="106.660172" 
+          :lat="10.762622"
+          :zoom="14"/>
+      </div>
     </div>
-
   </div>
 </template>
 
@@ -49,6 +57,7 @@ import HereMapRoute from './components/HereMapRoute.vue';
 import HereMapPlace from './components/HereMapPlace.vue';
 import HereMapWeather from './components/HereMapWeather.vue';
 import HereMapImage from './components/HereMapImage.vue';
+import HereMapCapture from './components/HereMapCapture.vue';
 
 export default {
   name: 'app',
@@ -57,7 +66,8 @@ export default {
     HereMapRoute,
     HereMapPlace,
     HereMapWeather,
-    HereMapImage
+    HereMapImage,
+    HereMapCapture
   }
 };
 </script>

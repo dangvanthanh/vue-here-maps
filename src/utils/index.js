@@ -27,5 +27,48 @@ export function setMapLanguage(map, platform, defaultLayers, language) {
   ui.removeControl('mapsettings');
 
   //
-  let behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+  //  let behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+}
+
+export function addDraggableMarker(map, behavior, marker) {
+  marker.draggable = true;
+
+  map.addEventListener(
+    'dragstart',
+    ev => {
+      let target = ev.target;
+
+      if (target instanceof H.map.Marker) {
+        behavior.disable();
+      }
+    },
+    false
+  );
+
+  map.addEventListener(
+    'dragend',
+    ev => {
+      let target = ev.target;
+
+      if (target instanceof H.map.Marker) {
+        behavior.enable();
+      }
+    },
+    false
+  );
+
+  map.addEventListener(
+    'drag',
+    ev => {
+      let target = ev.target;
+      let pointer = ev.currentPointer;
+
+      if (target instanceof H.map.Marker) {
+        target.setPosition(
+          map.screenToGeo(pointer.viewportX, pointer.viewportY)
+        );
+      }
+    },
+    false
+  );
 }

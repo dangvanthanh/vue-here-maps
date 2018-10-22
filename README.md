@@ -2,7 +2,7 @@
 
 - [x] Interactive maps
 - [x] Map image
-- [ ] Map title
+- [x] Map title
 - [x] Venue maps
 - [x] Geocoder
 - [ ] Geocoder autocomplete

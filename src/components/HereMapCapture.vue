@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { setMapLanguage } from '@/utils';
+import { setMapLanguage, addDraggableMarker } from '@/utils';
 
 export default {
   name: 'HereMapCapture',
@@ -55,7 +55,11 @@ export default {
     const marker = new H.map.Marker(coordinates);
     this.map.addObject(marker);
     var ui = H.ui.UI.createDefault(this.map, defaultLayers, 'en-US');
+    var behavior = new H.mapevents.Behavior(
+      new H.mapevents.MapEvents(this.map)
+    );
     setMapLanguage(this.map, this.platform, defaultLayers, 'VIE');
+    addDraggableMarker(this.map, behavior, marker);
 
     // Create capture button
     let captureContainer = document.createElement('div');

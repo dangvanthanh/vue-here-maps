@@ -40,8 +40,8 @@ export default {
     };
 
     this.map = new H.Map(this.$refs.map, defaultLayers.normal.map, mapOptions);
-
     const marker = new H.map.Marker(coordinates);
+    marker.setData(`<div>Your Marker</div>`);
     this.map.addObject(marker);
 
     // Add the venue layer to the map
@@ -53,6 +53,18 @@ export default {
     window.addEventListener('resize', () => {
       this.map.getViewPort().resize();
     });
+
+    marker.addEventListener(
+      'tap',
+      evt => {
+        let bubble = new H.ui.InfoBubble(evt.target.getPosition(), {
+          content: evt.target.getData()
+        });
+
+        ui.addBubble(bubble);
+      },
+      false
+    );
   }
 };
 </script>

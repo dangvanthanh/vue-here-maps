@@ -6,7 +6,7 @@ import MyButton from './MyButton';
 import Welcome from './Welcome';
 import HereMap from './HereMap';
 import HereMapMarker from './HereMapMarker';
-
+import HereMapImage from './HereMapImage';
 // storiesOf('Welcome', module).add('to Storybook', () => ({
 //   components: { Welcome },
 //   template: '<welcome :showApp="action" />',
@@ -33,7 +33,7 @@ import HereMapMarker from './HereMapMarker';
 //     methods: { action: action('clicked') }
 //   }));
 
-storiesOf('Interactive Maps', module)
+storiesOf('JavaScript', module)
   .add('Maps', () => ({
     components: { HereMap },
     template: `
@@ -45,7 +45,7 @@ storiesOf('Interactive Maps', module)
           :lat="10.762622"
           :zoom="14"/>
       </div>
-    `
+    `,
   }))
   .add('Markers', () => ({
     components: { HereMapMarker },
@@ -58,5 +58,12 @@ storiesOf('Interactive Maps', module)
           :lat="10.762622"
           :zoom="14"/>
       </div>
-    `
+    `,
   }));
+
+storiesOf('REST', module).add('Image', () => ({
+  components: { HereMapImage },
+  template: `
+    <div><HereMapImage/></div> 
+    `,
+}));

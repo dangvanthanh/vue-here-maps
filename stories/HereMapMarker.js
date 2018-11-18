@@ -5,34 +5,34 @@ export default {
     appCode: String,
     lng: Number,
     lat: Number,
-    zoom: Number
+    zoom: Number,
   },
   data() {
     return {
       map: {},
-      platform: {}
+      platform: {},
     };
   },
   template: `
     <div class="here-map">
-      <div ref="map" style="height: 100vh;"></div>
+      <div ref="map" style="height: calc(100vh - 16px)"></div>
     </div>
   `,
   created() {
     this.platform = new H.service.Platform({
       app_id: this.appId,
-      app_code: this.appCode
+      app_code: this.appCode,
     });
   },
   mounted() {
     const defaultLayers = this.platform.createDefaultLayers();
     const coordinates = {
       lng: this.lng,
-      lat: this.lat
+      lat: this.lat,
     };
     const mapOptions = {
       zoom: this.zoom,
-      center: coordinates
+      center: coordinates,
     };
 
     this.map = new H.Map(this.$refs.map, defaultLayers.normal.map, mapOptions);
@@ -41,5 +41,5 @@ export default {
     const marker = new H.map.Marker(coordinates);
     marker.setData(`<div>Your Marker</div>`);
     this.map.addObject(marker);
-  }
+  },
 };

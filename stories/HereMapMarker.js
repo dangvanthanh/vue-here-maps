@@ -23,6 +23,10 @@ export default {
       app_id: this.appId,
       app_code: this.appCode,
     });
+
+    window.addEventListener('resize', () => {
+      this.map.getViewPort().resize();
+    });
   },
   mounted() {
     const defaultLayers = this.platform.createDefaultLayers();
@@ -41,5 +45,31 @@ export default {
     const marker = new H.map.Marker(coordinates);
     marker.setData(`<div>Your Marker</div>`);
     this.map.addObject(marker);
+
+    let mapTileService = this.platform.getMapTileService({
+      type: 'base',
+    });
+
+    const pixelRatio = window.devicePixelRatio || 1;
+    const tileSize = pixelRatio === 1 ? 256 : 512;
+    const ppi = pixelRatio === 1 ? undefined : 320;
+
+    // Our layer will load tiles from the HERE Map Tile API
+    let mapLayer = mapTileService.createTileLayer(
+      'maptile',
+      'normal.day',
+      tileSize,
+      'png8',
+      { lg: 'VIE', ppi: ppi }
+    );
+
+    this.map.setBaseLayer(mapLayer);
+
+    const ui = H.ui.UI.createDefault(this.map, defaultLayers);
+
+    // Remove not needed settings control
+    ui.removeControl('mapsettings');
+
+    new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
   },
 };

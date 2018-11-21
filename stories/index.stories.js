@@ -7,6 +7,7 @@ import Welcome from './Welcome';
 import HereMap from './HereMap';
 import HereMapMarker from './HereMapMarker';
 import HereMapImage from './HereMapImage';
+import HereMapPlace from './HereMapPlace';
 // storiesOf('Welcome', module).add('to Storybook', () => ({
 //   components: { Welcome },
 //   template: '<welcome :showApp="action" />',
@@ -45,7 +46,7 @@ storiesOf('JavaScript', module)
           :lat="10.762622"
           :zoom="14"/>
       </div>
-    `,
+    `
   }))
   .add('Markers', () => ({
     components: { HereMapMarker },
@@ -58,12 +59,41 @@ storiesOf('JavaScript', module)
           :lat="10.762622"
           :zoom="14"/>
       </div>
-    `,
+    `
   }));
 
-storiesOf('REST', module).add('Image', () => ({
-  components: { HereMapImage },
-  template: `
+storiesOf('REST', module)
+  .add('Image', () => ({
+    components: { HereMapImage },
+    template: `
     <div><HereMapImage/></div> 
-    `,
-}));
+    `
+  }))
+  .add('Place', () => ({
+    components: { HereMapPlace },
+    template: `
+      <div>
+        <HereMapPlace
+          appId="FymdsOx1OInDIkWIBErG" 
+          appCode="i_LyBjYPh3K-ymfzPrpBPw" 
+          :lng="106.660172" 
+          :lat="10.762622"
+          :zoom="14"/>
+      </div>
+    `
+  }))
+  .add('Route', () => ({
+    template: `
+      <div>Route</div>
+    `
+  }))
+  .add('Capture', () => ({
+    template: `
+      <div>Capture</div>
+    `
+  }))
+  .add('Weather', () => ({
+    template: `
+    <div>Weather</div>
+  `
+  }));

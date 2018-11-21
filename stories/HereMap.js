@@ -5,12 +5,12 @@ export default {
     appCode: String,
     lng: Number,
     lat: Number,
-    zoom: Number,
+    zoom: Number
   },
   data() {
     return {
       map: {},
-      platform: {},
+      platform: {}
     };
   },
   template: `
@@ -21,7 +21,7 @@ export default {
   created() {
     this.platform = new H.service.Platform({
       app_id: this.appId,
-      app_code: this.appCode,
+      app_code: this.appCode
     });
 
     window.addEventListener('resize', () => {
@@ -32,18 +32,18 @@ export default {
     const defaultLayers = this.platform.createDefaultLayers();
     const coordinates = {
       lng: this.lng,
-      lat: this.lat,
+      lat: this.lat
     };
     const mapOptions = {
       zoom: this.zoom,
-      center: coordinates,
+      center: coordinates
     };
 
     this.map = new H.Map(this.$refs.map, defaultLayers.normal.map, mapOptions);
     this.map.addLayer(defaultLayers.venues);
 
     let mapTileService = this.platform.getMapTileService({
-      type: 'base',
+      type: 'base'
     });
 
     const pixelRatio = window.devicePixelRatio || 1;
@@ -64,5 +64,5 @@ export default {
     const events = new H.mapevents.MapEvents(this.map);
     const behavior = new H.mapevents.Behavior(events);
     const ui = H.ui.UI.createDefault(this.map, defaultLayers);
-  },
+  }
 };

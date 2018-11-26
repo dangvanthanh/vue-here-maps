@@ -5,6 +5,7 @@ import HereMapMarker from './HereMapMarker';
 import HereMapImage from './HereMapImage';
 import HereMapPlace from './HereMapPlace';
 import HereMapRoute from './HereMapRoute';
+import HereMapCapture from './HereMapCapture';
 
 storiesOf('JavaScript', module)
   .add('Maps', () => ({
@@ -68,8 +69,16 @@ storiesOf('REST', module)
     `
   }))
   .add('Capture', () => ({
+    components: { HereMapCapture },
     template: `
-      <div>Capture</div>
+      <div>
+        <HereMapCapture
+          appId="FymdsOx1OInDIkWIBErG" 
+          appCode="i_LyBjYPh3K-ymfzPrpBPw" 
+          :lng="106.660172" 
+          :lat="10.762622"
+          :zoom="14"/>
+      </div>
     `
   }))
   .add('Weather', () => ({

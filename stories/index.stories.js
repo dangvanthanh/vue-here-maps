@@ -19,7 +19,7 @@ storiesOf('JavaScript', module)
           :lat="10.762622"
           :zoom="14"/>
       </div>
-    `,
+    `
   }))
   .add('Markers', () => ({
     components: { HereMapMarker },
@@ -32,7 +32,7 @@ storiesOf('JavaScript', module)
           :lat="10.762622"
           :zoom="14"/>
       </div>
-    `,
+    `
   }));
 
 storiesOf('REST', module)
@@ -40,7 +40,7 @@ storiesOf('REST', module)
     components: { HereMapImage },
     template: `
     <div><HereMapImage/></div> 
-    `,
+    `
   }))
   .add('Place', () => ({
     components: { HereMapPlace },
@@ -53,7 +53,7 @@ storiesOf('REST', module)
           :lat="10.762622"
           :zoom="14"/>
       </div>
-    `,
+    `
   }))
   .add('Route', () => ({
     components: { HereMapRoute },
@@ -66,7 +66,7 @@ storiesOf('REST', module)
           :lat="10.762622"
           :zoom="14"/>
       </div>
-    `,
+    `
   }))
   .add('Capture', () => ({
     components: { HereMapCapture },
@@ -79,10 +79,10 @@ storiesOf('REST', module)
           :lat="10.762622"
           :zoom="14"/>
       </div>
-    `,
+    `
   }))
   .add('Weather', () => ({
     template: `
     <div>Weather</div>
-  `,
+  `
   }));

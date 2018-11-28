@@ -8,12 +8,12 @@ export default {
     appCode: String,
     lng: Number,
     lat: Number,
-    zoom: Number,
+    zoom: Number
   },
   data() {
     return {
       map: {},
-      platform: {},
+      platform: {}
     };
   },
   template: `
@@ -24,7 +24,7 @@ export default {
   created() {
     this.platform = this.getPlatform({
       app_id: this.appId,
-      app_code: this.appCode,
+      app_code: this.appCode
     });
 
     window.addEventListener('resize', () => {
@@ -35,11 +35,11 @@ export default {
     const defaultLayers = this.platform.createDefaultLayers();
     const coordinates = {
       lng: this.lng,
-      lat: this.lat,
+      lat: this.lat
     };
     const mapOptions = {
       zoom: this.zoom,
-      center: coordinates,
+      center: coordinates
     };
 
     this.map = this.getMap(
@@ -50,7 +50,7 @@ export default {
     this.map.addLayer(defaultLayers.venues);
 
     let mapTileService = this.platform.getMapTileService({
-      type: 'base',
+      type: 'base'
     });
 
     const pixelRatio = window.devicePixelRatio || 1;
@@ -71,5 +71,5 @@ export default {
     const events = this.getEvents(this.map);
     const behavior = this.getBehavior(events);
     const ui = this.getUi(this.map, defaultLayers);
-  },
+  }
 };

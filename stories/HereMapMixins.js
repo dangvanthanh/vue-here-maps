@@ -14,6 +14,6 @@ export default {
     },
     getUi(map, layers) {
       return H.ui.UI.createDefault(map, layers);
-    },
-  },
+    }
+  }
 };

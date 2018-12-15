@@ -1,4 +1,11 @@
-import HereMapMixins from './HereMapMixins';
+<template>
+  <div class="here-map">
+    <div ref="map" style="height: calc(100vh - 30px)"></div>
+  </div>
+</template>
+
+<script>
+import HereMapMixins from '../HereMapMixins';
 
 export default {
   name: 'HereMap',
@@ -8,7 +15,8 @@ export default {
     appCode: String,
     lng: Number,
     lat: Number,
-    zoom: Number
+    zoom: Number,
+    theme: String
   },
   data() {
     return {
@@ -16,11 +24,16 @@ export default {
       platform: {}
     };
   },
-  template: `
-    <div class="here-map">
-      <div ref="map" style="height: calc(100vh - 16px)"></div>
-    </div>
-  `,
+  watch: {
+    theme(newVal, oldVal) {
+      var tiles = this.platform.getMapTileService({ type: 'base' });
+      var layer = tiles.createTileLayer('maptile', newVal, 256, 'png', {
+        style: 'default',
+        lg: 'VIE'
+      });
+      this.map.setBaseLayer(layer);
+    }
+  },
   created() {
     this.platform = this.getPlatform({
       app_id: this.appId,
@@ -73,3 +86,7 @@ export default {
     const ui = this.getUi(this.map, defaultLayers);
   }
 };
+</script>
+
+<style>
+</style>

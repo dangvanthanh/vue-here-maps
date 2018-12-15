@@ -1,6 +1,9 @@
 import { storiesOf } from '@storybook/vue';
 
-import HereMap from './HereMap';
+import HereMap from './components/HereMap.vue';
+import HereMapTheme from './components/HereMapTheme.vue';
+import HereMapWeather from './components/HereMapWeather.vue';
+
 import HereMapMarker from './HereMapMarker';
 import HereMapImage from './HereMapImage';
 import HereMapPlace from './HereMapPlace';
@@ -9,7 +12,12 @@ import HereMapCapture from './HereMapCapture';
 
 storiesOf('JavaScript', module)
   .add('Maps', () => ({
-    components: { HereMap },
+    components: { HereMap, HereMapTheme },
+    data() {
+      return {
+        theme: 'normal.day'
+      };
+    },
     template: `
       <div>
         <HereMap 
@@ -17,9 +25,16 @@ storiesOf('JavaScript', module)
           appCode="i_LyBjYPh3K-ymfzPrpBPw" 
           :lng="106.660172" 
           :lat="10.762622"
-          :zoom="14"/>
+          :zoom="14"
+          :theme="theme"/>
+        <HereMapTheme @handlerClick="switchTheme">
       </div>
-    `
+    `,
+    methods: {
+      switchTheme(theme) {
+        this.theme = theme;
+      }
+    }
   }))
   .add('Markers', () => ({
     components: { HereMapMarker },
@@ -82,7 +97,12 @@ storiesOf('REST', module)
     `
   }))
   .add('Weather', () => ({
+    components: { HereMapWeather },
     template: `
-    <div>Weather</div>
+      <HereMapWeather
+        appId="FymdsOx1OInDIkWIBErG" 
+        appCode="i_LyBjYPh3K-ymfzPrpBPw" 
+        :lng="106.660172" 
+        :lat="10.762622"/>
   `
   }));

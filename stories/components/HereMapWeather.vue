@@ -14,7 +14,6 @@
 <script>
 import axios from 'axios';
 import format from 'date-fns/format';
-import { WEATHER_API } from '../services/HereRest';
 
 export default {
   name: 'HereMapWeather',
@@ -41,7 +40,7 @@ export default {
   mounted() {
     axios
       .get(
-        `${WEATHER_API}?product=forecast_7days_simple&latitude=${
+        `https://weather.api.here.com/weather/1.0/report.json?product=forecast_7days_simple&latitude=${
           this.lat
         }&longitude=${this.lng}&app_id=${this.appId}&app_code=${this.appCode}`
       )

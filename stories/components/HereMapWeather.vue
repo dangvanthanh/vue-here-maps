@@ -4,7 +4,11 @@
     <div class="forecasts">
       <div v-for="forecast in weather" :key="forecast.dayOfWeek">
         <img :src="forecast.iconLink" />
-        <div>{{ forecast.highTemperature }}<sup>C</sup>/{{ forecast.highTemperature | fahrenheit }}<sup>F</sup></div>
+        <div>
+          {{ forecast.highTemperature }}<sup>C</sup>/{{
+            forecast.highTemperature | fahrenheit
+          }}<sup>F</sup>
+        </div>
         <div>{{ forecast.utcTime | format }}</div>
       </div>
     </div>

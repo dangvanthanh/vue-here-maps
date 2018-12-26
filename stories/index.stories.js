@@ -27,7 +27,7 @@ storiesOf('JavaScript', module)
           :lat="10.762622"
           :zoom="14"
           :theme="theme"/>
-        <HereMapTheme @handlerClick="switchTheme">
+        <HereMapTheme @handlerClick="switchTheme" />
       </div>
     `,
     methods: {

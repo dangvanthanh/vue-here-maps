@@ -1,14 +1,13 @@
 import { storiesOf } from '@storybook/vue';
 
 import HereMap from './components/HereMap.vue';
+import HereMapCapture from './components/HereMapCapture.vue';
+import HereMapImage from './components/HereMapImage.vue';
+import HereMapMarker from './components/HereMapMarker.vue';
 import HereMapTheme from './components/HereMapTheme.vue';
+import HereMapPlace from './components/HereMapPlace.vue';
+import HereMapRoute from './components/HereMapRoute.vue';
 import HereMapWeather from './components/HereMapWeather.vue';
-
-import HereMapMarker from './HereMapMarker';
-import HereMapImage from './HereMapImage';
-import HereMapPlace from './HereMapPlace';
-import HereMapRoute from './HereMapRoute';
-import HereMapCapture from './HereMapCapture';
 
 storiesOf('JavaScript', module)
   .add('Maps', () => ({

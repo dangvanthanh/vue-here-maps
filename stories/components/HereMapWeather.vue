@@ -9,7 +9,7 @@
             forecast.highTemperature | fahrenheit
           }}<sup>F</sup>
         </div>
-        <div>{{ forecast.utcTime | format }}</div>
+        <div>{{ format(parseISO(forecast.utcTime), 'MMM dd, yyyy') }}</div>
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@
 
 <script>
 import axios from 'axios';
-import format from 'date-fns/format';
+import { format, parseISO } from 'date-fns';
 
 export default {
   name: 'HereMapWeather',
@@ -30,13 +30,12 @@ export default {
   data() {
     return {
       state: '',
-      weather: []
+      weather: [],
+      format,
+      parseISO
     };
   },
   filters: {
-    format: function(value) {
-      return format(value, 'MMM DD, YYYY');
-    },
     fahrenheit: function(value) {
       return (value * (9 / 5) + 32).toFixed(2);
     }
@@ -44,9 +43,7 @@ export default {
   mounted() {
     axios
       .get(
-        `https://weather.api.here.com/weather/1.0/report.json?product=forecast_7days_simple&latitude=${
-          this.lat
-        }&longitude=${this.lng}&app_id=${this.appId}&app_code=${this.appCode}`
+        `https://weather.api.here.com/weather/1.0/report.json?product=forecast_7days_simple&latitude=${this.lat}&longitude=${this.lng}&app_id=${this.appId}&app_code=${this.appCode}`
       )
       .then(res => {
         if (res.data) {

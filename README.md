@@ -1,4 +1,4 @@
-# Here
+# Here Maps
 
 - [x] Interactive maps
 - [x] Map image
@@ -26,3 +26,7 @@
 - [ ] Waypoint sequence extension
 - [ ] Fleet connectivity extension
 - [ ] On-demand
+
+## License
+
+MIT © [Dang Van Thanh](http://dangthanh.org)

@@ -4,5 +4,6 @@ module.exports = {
     '@storybook/addon-actions/register',
     '@storybook/addon-links/register',
     '@storybook/addon-options/register',
+    '@storybook/addon-postcss'
   ],
 };

@@ -20,8 +20,8 @@ storiesOf('JavaScript', module)
     template: `
       <div>
         <HereMap 
-          appId="FymdsOx1OInDIkWIBErG" 
-          appCode="i_LyBjYPh3K-ymfzPrpBPw" 
+          appId="${process.env.VUE_HERE_APP_ID}" 
+          appCode="${process.env.VUE_HERE_APP_CODE}" 
           :lng="106.660172" 
           :lat="10.762622"
           :zoom="14"
@@ -40,8 +40,8 @@ storiesOf('JavaScript', module)
     template: `
       <div>
         <HereMapMarker 
-          appId="FymdsOx1OInDIkWIBErG" 
-          appCode="i_LyBjYPh3K-ymfzPrpBPw" 
+          appId="${process.env.VUE_HERE_APP_ID}" 
+          appCode="${process.env.VUE_HERE_APP_CODE}" 
           :lng="106.660172" 
           :lat="10.762622"
           :zoom="14"/>
@@ -61,8 +61,8 @@ storiesOf('REST', module)
     template: `
       <div>
         <HereMapPlace
-          appId="FymdsOx1OInDIkWIBErG" 
-          appCode="i_LyBjYPh3K-ymfzPrpBPw" 
+          appId="${process.env.VUE_HERE_APP_ID}" 
+          appCode="${process.env.VUE_HERE_APP_CODE}" 
           :lng="106.660172" 
           :lat="10.762622"
           :zoom="14"/>
@@ -74,8 +74,8 @@ storiesOf('REST', module)
     template: `
       <div>
         <HereMapRoute
-          appId="FymdsOx1OInDIkWIBErG" 
-          appCode="i_LyBjYPh3K-ymfzPrpBPw" 
+          appId="${process.env.VUE_HERE_APP_ID}" 
+          appCode="${process.env.VUE_HERE_APP_CODE}" 
           :lng="106.660172" 
           :lat="10.762622"
           :zoom="14"/>
@@ -87,8 +87,8 @@ storiesOf('REST', module)
     template: `
       <div>
         <HereMapCapture
-          appId="FymdsOx1OInDIkWIBErG" 
-          appCode="i_LyBjYPh3K-ymfzPrpBPw" 
+          appId="${process.env.VUE_HERE_APP_ID}" 
+          appCode="${process.env.VUE_HERE_APP_CODE}" 
           :lng="106.660172" 
           :lat="10.762622"
           :zoom="14"/>
@@ -99,8 +99,8 @@ storiesOf('REST', module)
     components: { HereMapWeather },
     template: `
       <HereMapWeather
-        appId="FymdsOx1OInDIkWIBErG" 
-        appCode="i_LyBjYPh3K-ymfzPrpBPw" 
+        appId="${process.env.VUE_HERE_APP_ID}" 
+        appCode="${process.env.VUE_HERE_APP_CODE}" 
         :lng="106.660172" 
         :lat="10.762622"/>
   `

@@ -1,6 +1,6 @@
 <template>
   <div class="here-map">
-    <div ref="map" style="height: calc(100vh - 30px)"></div>
+    <div ref="map" style="height: calc(100vh - 100px)"></div>
   </div>
 </template>
 

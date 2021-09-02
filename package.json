@@ -23,15 +23,19 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@dangvanthanh/prettier-config": "^1.0.0",
     "@storybook/addon-actions": "^6.1.11",
     "@storybook/addon-links": "^6.1.11",
     "@storybook/addon-options": "^5.3.21",
+    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addons": "^6.1.11",
     "@storybook/vue": "^6.1.11",
+    "autoprefix": "^1.0.1",
     "babel-loader": "^8.2.2",
     "babel-preset-vue": "^2.0.2",
-    "husky": "^6.0.0",
-    "lint-staged": "^10.5.3",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "postcss-flexbugs-fixes": "^5.0.2",
     "prettier": "^2.2.1",
     "vue-loader": "^15.9.6",
     "vue-template-compiler": "^2.6.12"
@@ -47,10 +51,5 @@
       "git add"
     ]
   },
-  "prettier": {
-    "printWidth": 100,
-    "trailingComma": "es5",
-    "semi": false,
-    "singleQuote": true
-  }
+  "prettier": "@dangvanthanh/prettier-config"
 }

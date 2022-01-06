@@ -11,8 +11,7 @@ export default {
   name: 'HereMap',
   mixins: [HereMapMixins],
   props: {
-    appId: String,
-    appCode: String,
+    apiKey: String,
     lng: Number,
     lat: Number,
     zoom: Number,
@@ -36,8 +35,7 @@ export default {
   },
   created() {
     this.platform = this.getPlatform({
-      app_id: this.appId,
-      app_code: this.appCode
+      apikey: this.apiKey
     });
 
     window.addEventListener('resize', () => {
@@ -57,10 +55,9 @@ export default {
 
     this.map = this.getMap(
       this.$refs.map,
-      defaultLayers.normal.map,
+      defaultLayers.raster.normal.map,
       mapOptions
     );
-    this.map.addLayer(defaultLayers.venues);
 
     let mapTileService = this.platform.getMapTileService({
       type: 'base'

@@ -11,8 +11,7 @@ export default {
   name: 'HereMapMarker',
   mixins: [HereMapMixins],
   props: {
-    appId: String,
-    appCode: String,
+    apiKey: String,
     lng: Number,
     lat: Number,
     zoom: Number
@@ -25,8 +24,7 @@ export default {
   },
   created() {
     this.platform = this.getPlatform({
-      app_id: this.appId,
-      app_code: this.appCode
+      apikey: this.apiKey
     });
 
     window.addEventListener('resize', () => {
@@ -44,8 +42,7 @@ export default {
       center: coordinates
     };
 
-    this.map = new H.Map(this.$refs.map, defaultLayers.normal.map, mapOptions);
-    this.map.addLayer(defaultLayers.venues);
+    this.map = new H.Map(this.$refs.map, defaultLayers.raster.normal.map, mapOptions);
 
     const marker = new H.map.Marker(coordinates);
     marker.setData(`<div>Your Marker</div>`);

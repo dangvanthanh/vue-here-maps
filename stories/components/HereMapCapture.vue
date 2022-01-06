@@ -16,8 +16,7 @@ export default {
   name: 'HereMapCapture',
   mixins: [HereMapMixins],
   props: {
-    appId: String,
-    appCode: String,
+    apiKey: String,
     lng: Number,
     lat: Number,
     zoom: Number
@@ -34,8 +33,7 @@ export default {
   `,
   created() {
     this.platform = this.getPlatform({
-      app_id: this.appId,
-      app_code: this.appCode
+      apikey: this.apiKey
     });
   },
   mounted() {
@@ -50,7 +48,7 @@ export default {
       center: coordinates
     };
 
-    this.map = new H.Map(this.$refs.map, defaultLayers.normal.map, mapOptions);
+    this.map = new H.Map(this.$refs.map, defaultLayers.raster.normal.map, mapOptions);
     const events = this.getEvents(this.map);
     const behavior = this.getBehavior(events);
     const ui = this.getUi(this.map, defaultLayers);
